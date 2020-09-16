@@ -1,0 +1,6 @@
+# DJANGO
+DJANGO_DEBUG=True
+KILIMO_KEY=lr$b!4+kr=p060k@f6z1eqdve59fo7_20l0sp9@7qjp0r4+ca&
+
+# DATABASE
+SQLITE_DB=dbtesting.sqlite3
