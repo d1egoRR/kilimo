@@ -15,7 +15,7 @@ from .serializers import FieldTerrainSerializer, RainSerializer
 class FieldTerrainViewSet(viewsets.ModelViewSet):
     serializer_class = FieldTerrainSerializer
     queryset = FieldTerrain.objects.all()
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    #permission_classes = [IsAuthenticatedOrReadOnly]
     http_method_names = ('get', 'post')
     lookup_field = 'uuid'
 
@@ -30,7 +30,7 @@ class FieldTerrainViewSet(viewsets.ModelViewSet):
     @action(
         detail=False,
         methods=["GET"],
-        name="Get FieldTerrains with Rain Average"
+        name="Get FieldTerrains with Rain Average in 'x' days"
     )
     def average_rain(self, request, *args, **kwargs):
         params = json.loads(request.body)
@@ -42,10 +42,10 @@ class FieldTerrainViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        field_terrain_list = get_list_or_404(FieldTerrain)
+        fieldterrain_list = get_list_or_404(FieldTerrain)
 
         serializer = FieldTerrainSerializer(
-            field_terrain_list,
+            fieldterrain_list,
             many=True,
             context={
                 'days': params.get('days', None)
@@ -56,7 +56,7 @@ class FieldTerrainViewSet(viewsets.ModelViewSet):
     @action(
         detail=False,
         methods=["GET"],
-        name="Get FieldTerrain With Acumulation Rain"
+        name="Get FieldTerrain with Acumulation Rain"
     )
     def cumulative_rain_greater_than(self, request, *args, **kwargs):
         params = json.loads(request.body)
@@ -68,19 +68,19 @@ class FieldTerrainViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        field_terrain_list = [
-            field_terrain
-            for field_terrain in self.get_queryset()
-            if field_terrain.cumulative_rain_greater_than(milimeters)
+        fieldterrain_list = [
+            fieldterrain
+            for fieldterrain in self.get_queryset()
+            if fieldterrain.cumulative_rain_greater_than(milimeters)
         ]
 
-        serializer = FieldTerrainSerializer(field_terrain_list, many=True)
+        serializer = FieldTerrainSerializer(fieldterrain_list, many=True)
         return Response(serializer.data)
 
 
 class RainViewSet(viewsets.ModelViewSet):
     serializer_class = RainSerializer
     queryset = Rain.objects.all()
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    #permission_classes = [IsAuthenticatedOrReadOnly]
     http_method_names = ('get', 'post')
     lookup_field = 'uuid'
