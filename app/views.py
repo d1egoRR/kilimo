@@ -56,13 +56,12 @@ class FieldTerrainViewSet(viewsets.ModelViewSet):
         url_path='cumulative-rain-greater-than/(?P<milimeters>[^/.]+)',
         name="Get FieldTerrain with Acumulation Rain"
     )
-    def cumulative_rain_greater_than(self, request, milimeters, *args, **kwargs):
-        fieldterrain_list = [
-            fieldterrain
-            for fieldterrain in self.get_queryset()
-            if fieldterrain.cumulative_rain_greater_than(milimeters)
-        ]
-
+    def cumulative_rain_greater_than(
+        self, request, milimeters, *args, **kwargs
+    ):
+        fieldterrain_list = FieldTerrain.get_cumulative_rain_greater_than(
+            milimeters=milimeters
+        )
         serializer = FieldTerrainSerializer(fieldterrain_list, many=True)
         return Response(serializer.data)
 

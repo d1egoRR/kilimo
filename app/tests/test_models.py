@@ -8,12 +8,11 @@ from app.models import FieldTerrain, Rain
 
 
 @pytest.mark.django_db
-class TestFieldTerrain:
+class TestFieldTerrain:        
 
     @pytest.fixture
     def fieldterrain(self, db):
         fieldterrain = mixer.blend(FieldTerrain)
-
         curren_datetime = datetime.datetime.now()
 
         rain1 = mixer.blend(
@@ -42,6 +41,8 @@ class TestFieldTerrain:
         assert fieldterrain.average_rain(days=3) == 83.33
 
     def test_cumulative_rain_greater_than(self, fieldterrain):
-        assert fieldterrain.cumulative_rain_greater_than(120) is True
-        assert fieldterrain.cumulative_rain_greater_than(240) is True
-        assert fieldterrain.cumulative_rain_greater_than(1000) is False
+        fieldterrain_list = FieldTerrain.get_cumulative_rain_greater_than(240)
+        assert fieldterrain_list.count() == 1
+
+        fieldterrain_list = FieldTerrain.get_cumulative_rain_greater_than(1200)
+        assert fieldterrain_list.count() == 0

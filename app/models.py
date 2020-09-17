@@ -25,9 +25,13 @@ class FieldTerrain(models.Model):
         if result['milimeters__avg'] is not None:
             return round(float(result['milimeters__avg']), 2)
 
-    def cumulative_rain_greater_than(self, milimeters):
-        result = self.rains.aggregate(Sum('milimeters'))
-        return result['milimeters__sum'] > int(milimeters)
+    @classmethod
+    def get_cumulative_rain_greater_than(self, milimeters):
+        return FieldTerrain.objects.annotate(
+            accumulated_milimeters=Sum('rains__milimeters')
+        ).filter(
+            accumulated_milimeters__gt=milimeters
+        )
 
     def __str__(self):
         return self.name
