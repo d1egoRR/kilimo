@@ -122,6 +122,6 @@ class TestRainViewSet:
     def test_rain_list(self, client, rain):
         response = client.get(reverse('rain-list'))
         assert response.json is not None
-        assert response.status_code == 200
+        assert response.status_code == status.HTTP_200_OK
         assert len(response.json()) == 1
         assert response.json()[0]['rain_date'] == str(rain.rain_date)
