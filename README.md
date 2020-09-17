@@ -31,7 +31,6 @@
 
 ### 3. Importar datos desde fixtures ###
 
-- **Setear variable de entorno:** `export DJANGO_SETTINGS_MODULE=rainfalls.settings.dev`
 - **FieldTerrain (Campos)**: `python manage.py loaddata fixtures/FieldTerrain.json`
 - **Rains**: `python manage.py loaddata fixtures/Rain.json`
 
