@@ -2,12 +2,12 @@
 
 ## Índice ##
 
-1. Instalación
-2. Ejecutar
-3. IMportar datos desde fixtures
-4. Ejecutar Tests
-5. Code Style
-6. Ejemplos de la API
+1. [Instalación](#Instalación)
+2. [Ejecutar](#Ejecutar)
+3. [Importar datos desde fixtures](#Importar-datos-desde-fixtures)
+4. [Ejecutar Tests](#Ejecutar-Tests)
+5. [Code Style](#Code-Style)
+6. [Ejemplos de la API](#Ejemplos-de-la-API)
 
 
 ### 1. Instalación ###
