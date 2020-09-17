@@ -15,10 +15,10 @@ class FieldTerrainAdmin(admin.ModelAdmin):
 @admin.register(Rain)
 class RainAdmin(admin.ModelAdmin):
     list_display = (
-        'id', 'uuid', 'field_terrain_name', 'rain_date', 'milimeters',
+        'id', 'uuid', 'fieldterrain_name', 'rain_date', 'milimeters',
     )
-    search_fields = ('field_terrain__name',)
+    search_fields = ('fieldterrain__name',)
     list_filter = ('rain_date',)
 
-    def field_terrain_name(self, instance):
-        return instance.field_terrain.name
+    def fieldterrain_name(self, instance):
+        return instance.fieldterrain.name

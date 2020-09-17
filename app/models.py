@@ -3,7 +3,7 @@ import uuid
 from datetime import datetime, timedelta
 
 from django.db import models
-from django.db.models import Avg, Q, Sum
+from django.db.models import Avg, Sum
 
 
 class FieldTerrain(models.Model):
@@ -22,11 +22,12 @@ class FieldTerrain(models.Model):
         ).aggregate(
             Avg('milimeters')
         )
-        return round(result['milimeters__avg'], 2)
+        if result['milimeters__avg'] is not None:
+            return round(float(result['milimeters__avg']), 2)
 
     def cumulative_rain_greater_than(self, milimeters):
         result = self.rains.aggregate(Sum('milimeters'))
-        return result['milimeters__sum'] > milimeters
+        return result['milimeters__sum'] > int(milimeters)
 
     def __str__(self):
         return self.name
@@ -40,7 +41,7 @@ class Rain(models.Model):
     uuid = models.UUIDField(
         "UUID", default=uuid.uuid4, editable=False, unique=True
     )
-    field_terrain = models.ForeignKey(
+    fieldterrain = models.ForeignKey(
         FieldTerrain, on_delete=models.CASCADE, related_name='rains'
     )
     rain_date = models.DateField()
@@ -48,7 +49,7 @@ class Rain(models.Model):
     created_at = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return (f'{self.field_terrain} | {self.rain_date} | '
+        return (f'{self.fieldterrain} | {self.rain_date} | '
                 f'{self.milimeters} milimeters')
 
     class Meta:
