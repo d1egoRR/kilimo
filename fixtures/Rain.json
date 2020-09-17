@@ -1,0 +1,123 @@
+[
+{
+    "model": "apps.rain",
+    "pk": 1,
+    "fields": {
+        "uuid": "4e774f60-dd93-4669-b001-44fd11d37f04",
+        "fieldterrain": 1,
+        "rain_date": "2020-09-15",
+        "milimeters": "55.00",
+        "created_at": "2020-09-16"
+    }
+},
+{
+    "model": "apps.rain",
+    "pk": 2,
+    "fields": {
+        "uuid": "fe627bda-3c50-4049-9ff9-6570c76545dc",
+        "fieldterrain": 1,
+        "rain_date": "2020-09-14",
+        "milimeters": "130.00",
+        "created_at": "2020-09-16"
+    }
+},
+{
+    "model": "apps.rain",
+    "pk": 3,
+    "fields": {
+        "uuid": "34099ba1-794a-45dd-b903-b100dd3576e9",
+        "fieldterrain": 1,
+        "rain_date": "2020-09-12",
+        "milimeters": "76.77",
+        "created_at": "2020-09-16"
+    }
+},
+{
+    "model": "apps.rain",
+    "pk": 4,
+    "fields": {
+        "uuid": "05c1f071-d440-4029-a304-b64352b2c775",
+        "fieldterrain": 1,
+        "rain_date": "2020-09-09",
+        "milimeters": "65.00",
+        "created_at": "2020-09-17"
+    }
+},
+{
+    "model": "apps.rain",
+    "pk": 5,
+    "fields": {
+        "uuid": "5c57687c-94ca-45c8-b8f2-4d70eb737751",
+        "fieldterrain": 2,
+        "rain_date": "2020-09-14",
+        "milimeters": "78.00",
+        "created_at": "2020-09-17"
+    }
+},
+{
+    "model": "apps.rain",
+    "pk": 6,
+    "fields": {
+        "uuid": "15d1481b-0574-432a-844b-a6c11441525c",
+        "fieldterrain": 2,
+        "rain_date": "2020-09-16",
+        "milimeters": "99.00",
+        "created_at": "2020-09-17"
+    }
+},
+{
+    "model": "apps.rain",
+    "pk": 7,
+    "fields": {
+        "uuid": "8e7fd1a4-3342-4213-bdeb-9c5f871c3316",
+        "fieldterrain": 3,
+        "rain_date": "2020-09-16",
+        "milimeters": "38.00",
+        "created_at": "2020-09-17"
+    }
+},
+{
+    "model": "apps.rain",
+    "pk": 8,
+    "fields": {
+        "uuid": "71b8d3ad-b7be-4ab3-aa39-711277844ba8",
+        "fieldterrain": 3,
+        "rain_date": "2020-09-17",
+        "milimeters": "56.00",
+        "created_at": "2020-09-17"
+    }
+},
+{
+    "model": "apps.rain",
+    "pk": 9,
+    "fields": {
+        "uuid": "3a2914c0-50a9-4d1c-8c2b-e4e4efe4b18d",
+        "fieldterrain": 3,
+        "rain_date": "2020-09-12",
+        "milimeters": "32.00",
+        "created_at": "2020-09-17"
+    }
+},
+{
+    "model": "apps.rain",
+    "pk": 10,
+    "fields": {
+        "uuid": "37ba3876-28dd-4887-ba48-a9f4e2f3c1bd",
+        "fieldterrain": 3,
+        "rain_date": "2020-09-11",
+        "milimeters": "42.00",
+        "created_at": "2020-09-17"
+    }
+},
+{
+    "model": "apps.rain",
+    "pk": 11,
+    "fields": {
+        "uuid": "9943fcde-65ff-4cfe-8991-5e53390d0a31",
+        "fieldterrain": 3,
+        "rain_date": "2020-09-13",
+        "milimeters": "22.00",
+        "created_at": "2020-09-17"
+    }
+}
+]

@@ -1,0 +1,35 @@
+[
+{
+    "model": "apps.fieldterrain",
+    "pk": 1,
+    "fields": {
+        "uuid": "45a508df-c424-4d79-8d5e-742ce81bb68c",
+        "name": "Campo 1",
+        "hectares": 5500,
+        "latitude": 0.0,
+        "longitude": 0.0
+    }
+},
+{
+    "model": "apps.fieldterrain",
+    "pk": 2,
+    "fields": {
+        "uuid": "c9622c32-e67d-499f-ba7c-70f674379b88",
+        "name": "Campo 2",
+        "hectares": 12650,
+        "latitude": 0.0,
+        "longitude": 0.0
+    }
+},
+{
+    "model": "apps.fieldterrain",
+    "pk": 3,
+    "fields": {
+        "uuid": "8a8ad76b-361d-47cc-b5b8-f5dc779210a1",
+        "name": "Campo 3",
+        "hectares": 1800,
+        "latitude": 0.0,
+        "longitude": 0.0
+    }
+}
+]
