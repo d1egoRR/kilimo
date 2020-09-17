@@ -63,14 +63,14 @@ class TestFieldTerrainViewSet:
 
     def test_average_rain(self, client, fieldterrain_with_rains):
         response = client.get(
-            reverse('fieldterrain-average-rain', kwargs={'days':2})
+            reverse('fieldterrain-average-rain', kwargs={'days': 2})
         )
         assert response.json is not None
         assert response.status_code == status.HTTP_200_OK
         assert response.json()[0]['average_rain'] == 87.5
 
         response = client.get(
-            reverse('fieldterrain-average-rain', kwargs={'days':7})
+            reverse('fieldterrain-average-rain', kwargs={'days': 7})
         )
         assert response.json is not None
         assert response.status_code == status.HTTP_200_OK
@@ -78,17 +78,19 @@ class TestFieldTerrainViewSet:
 
         # Tope de dias == 7 -> Bad Request
         response = client.get(
-            reverse('fieldterrain-average-rain', kwargs={'days':10})
+            reverse('fieldterrain-average-rain', kwargs={'days': 10})
         )
         assert response.json is not None
         assert response.status_code == status.HTTP_400_BAD_REQUEST
         assert 'error' in response.json()
 
-    def test_cumulative_rain_greater_than(self, client, fieldterrain_with_rains):
+    def test_cumulative_rain_greater_than(
+        self, client, fieldterrain_with_rains
+    ):
         response = client.get(
             reverse(
                 'fieldterrain-cumulative-rain-greater-than',
-                kwargs={'milimeters':200}
+                kwargs={'milimeters': 200}
             )
         )
         assert response.json is not None
@@ -98,7 +100,7 @@ class TestFieldTerrainViewSet:
         response = client.get(
             reverse(
                 'fieldterrain-cumulative-rain-greater-than',
-                kwargs={'milimeters':1500}
+                kwargs={'milimeters': 1500}
             )
         )
         assert response.json is not None

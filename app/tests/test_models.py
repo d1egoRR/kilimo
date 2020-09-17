@@ -8,7 +8,7 @@ from app.models import FieldTerrain, Rain
 
 
 @pytest.mark.django_db
-class TestFieldTerrain:        
+class TestFieldTerrain:
 
     @pytest.fixture
     def fieldterrain(self, db):

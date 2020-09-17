@@ -15,7 +15,7 @@ from .serializers import FieldTerrainSerializer, RainSerializer
 class FieldTerrainViewSet(viewsets.ModelViewSet):
     serializer_class = FieldTerrainSerializer
     queryset = FieldTerrain.objects.all()
-    #permission_classes = [IsAuthenticatedOrReadOnly]
+    # permission_classes = [IsAuthenticatedOrReadOnly]
     http_method_names = ('get', 'post')
     lookup_field = 'uuid'
 
@@ -69,6 +69,6 @@ class FieldTerrainViewSet(viewsets.ModelViewSet):
 class RainViewSet(viewsets.ModelViewSet):
     serializer_class = RainSerializer
     queryset = Rain.objects.all()
-    #permission_classes = [IsAuthenticatedOrReadOnly]
+    # permission_classes = [IsAuthenticatedOrReadOnly]
     http_method_names = ('get', 'post')
     lookup_field = 'uuid'
