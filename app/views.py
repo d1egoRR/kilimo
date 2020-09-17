@@ -22,7 +22,7 @@ class FieldTerrainViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=["GET"], name="Get Rains by FieldTerrain")
     def rains(self, request, *args, **kwargs):
         rain_list = get_list_or_404(
-            Rain, field_terrain__uuid=kwargs.get(self.lookup_field)
+            Rain, fieldterrain__uuid=kwargs.get(self.lookup_field)
         )
         serializer = RainSerializer(rain_list, many=True)
         return Response(serializer.data)
@@ -30,25 +30,22 @@ class FieldTerrainViewSet(viewsets.ModelViewSet):
     @action(
         detail=False,
         methods=["GET"],
-        name="Get FieldTerrains with Rain Average in 'x' days"
+        url_path='average-rain/(?P<days>[^/.]+)',
+        name="Get FieldTerrains with Average Rain in 'x' days"
     )
-    def average_rain(self, request, *args, **kwargs):
-        params = json.loads(request.body)
-        days = params.get('days', None)
-
-        if days not in range(1, 8):
+    def average_rain(self, request, days, *args, **kwargs):
+        if int(days) not in range(1, 8):
             return Response(
                 {'error': 'Invalid day param. Must be between 1 and 7'},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
         fieldterrain_list = get_list_or_404(FieldTerrain)
-
         serializer = FieldTerrainSerializer(
             fieldterrain_list,
             many=True,
             context={
-                'days': params.get('days', None)
+                'days': int(days)
             }
         )
         return Response(serializer.data)
@@ -56,18 +53,10 @@ class FieldTerrainViewSet(viewsets.ModelViewSet):
     @action(
         detail=False,
         methods=["GET"],
+        url_path='cumulative-rain-greater-than/(?P<milimeters>[^/.]+)',
         name="Get FieldTerrain with Acumulation Rain"
     )
-    def cumulative_rain_greater_than(self, request, *args, **kwargs):
-        params = json.loads(request.body)
-        milimeters = params.get('milimeters', None)
-
-        if milimeters is None:
-            return Response(
-                {'error': 'Invalid param milimeters'},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
+    def cumulative_rain_greater_than(self, request, milimeters, *args, **kwargs):
         fieldterrain_list = [
             fieldterrain
             for fieldterrain in self.get_queryset()

@@ -6,9 +6,10 @@ from .models import FieldTerrain, Rain
 class FieldTerrainSerializer(serializers.ModelSerializer):
     average_rain = serializers.SerializerMethodField()
 
-    def average_rain(self, obj):
-        days = self.context.get('days')
-        return obj.average_rain(days)
+    def get_average_rain(self, obj):
+        days = self.context.get('days', None)
+        if days is not None:
+            return obj.average_rain(days)
 
     class Meta:
         model = FieldTerrain
