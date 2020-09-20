@@ -1,0 +1,16 @@
+language: python
+
+python:
+  - "3.7"
+
+env:
+  - DJANGO_SETTINGS_MODULE=rainfalls.settings.dev
+
+services:
+  - postgresql
+
+install:
+  - pipenv install
+
+script:
+  - pytest
