@@ -1,5 +1,7 @@
 # kilimo API
 
+[![Build Status](https://travis-ci.org/d1egoRR/kilimo.svg?branch=master)](https://travis-ci.org/d1egoRR/kilimo)
+
 ## Índice ##
 
 1. [Instalación](#1-instalación)
